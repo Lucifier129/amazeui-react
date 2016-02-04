@@ -6,7 +6,7 @@
   "main": "lib/AMUIReact.js",
   "scripts": {
     "test": "node ./node_modules/.bin/jest",
-    "start": "node_modules/.bin/gulp",
+    "start": "node_modules/.bin/gulp dev",
     "build": "gulp build",
     "examples": "node ./examples/server.js",
     "changelog": "github-changes -o amazeui -r amazeui-react -a"
