@@ -6,8 +6,8 @@
   "main": "lib/AMUIReact.js",
   "scripts": {
     "test": "node ./node_modules/.bin/jest",
-    "start": "gulp",
-    "build": "NODE_ENV=production gulp build",
+    "start": "node_modules/.bin/gulp",
+    "build": "gulp build",
     "examples": "node ./examples/server.js",
     "changelog": "github-changes -o amazeui -r amazeui-react -a"
   },
@@ -37,9 +37,7 @@
     "object-assign": "^4.0.1",
     "object.omit": "^2.0.0",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
-  },
-  "devDependencies": {
+    "react-dom": "^0.14.3",
     "amazeui": "^2.5.0",
     "autoprefixer-loader": "^3.1.0",
     "babel-core": "^6.3.26",
@@ -87,6 +85,9 @@
     "webpack-dev-middleware": "^1.4.0",
     "webpack-hot-middleware": "^2.6.0",
     "webpack-stream": "^3.1.0"
+  },
+  "devDependencies": {
+    
   },
   "jest": {
     "rootDir": "./src",

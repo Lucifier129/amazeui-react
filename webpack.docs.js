@@ -4,7 +4,7 @@ import marked from 'marked';
 import hl from 'highlight.js';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 
-const isProduction = process.env.NODE_ENV === 'production';
+const isProduction = true;
 const codeRenderer = function(code, lang) {
   lang = lang === 'js' ? 'javascript' : lang;
   if (lang === 'html') {
@@ -37,8 +37,8 @@ const basePlugins = [
     title: 'Amaze UI React',
     template: 'docs/index.html',
     inject: false,
-    UICDN: isProduction ? 'http://cdn.amazeui.org/amazeui/2.5.1/' : '',
-    assets: isProduction ? 'http://s.amazeui.org/assets/react' : '',
+    UICDN: isProduction ? '' : '',
+    assets: isProduction ? '' : '',
     stat: isProduction,
     minify: isProduction ? {
       removeComments: true,
@@ -108,6 +108,13 @@ export default {
   },
 
   plugins: basePlugins.concat(envPlugins),
+
+  resolve: {
+    alias: {
+      'react': path.join(__dirname, 'react-lite.common'),
+      'react-dom': path.join(__dirname, 'react-lite.common')
+    }
+  },
 
   // watch: !isProduction,
   node: {
