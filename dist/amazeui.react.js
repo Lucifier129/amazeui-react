@@ -1,4 +1,4 @@
-/*! Amaze UI React v1.0.0 | by Amaze UI Team | (c) 2016 AllMobilize, Inc. | Licensed under MIT | 2016-01-25T14:40:15+0800 */
+/*! Amaze UI React v1.0.1 | by Amaze UI Team | (c) 2016 AllMobilize, Inc. | Licensed under MIT | 2016-02-16T14:38:10+0800 */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("react"), require("react-dom"));
@@ -64,7 +64,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = {
-	  VERSION: '1.0.0',
+	  VERSION: '1.0.1',
 
 	  // layout
 	  Grid: __webpack_require__(2),
@@ -208,7 +208,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	  Copyright (c) 2015 Jed Watson.
+	  Copyright (c) 2016 Jed Watson.
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
@@ -220,7 +220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		var hasOwn = {}.hasOwnProperty;
 
 		function classNames () {
-			var classes = '';
+			var classes = [];
 
 			for (var i = 0; i < arguments.length; i++) {
 				var arg = arguments[i];
@@ -229,19 +229,19 @@ return /******/ (function(modules) { // webpackBootstrap
 				var argType = typeof arg;
 
 				if (argType === 'string' || argType === 'number') {
-					classes += ' ' + arg;
+					classes.push(arg);
 				} else if (Array.isArray(arg)) {
-					classes += ' ' + classNames.apply(null, arg);
+					classes.push(classNames.apply(null, arg));
 				} else if (argType === 'object') {
 					for (var key in arg) {
 						if (hasOwn.call(arg, key) && arg[key]) {
-							classes += ' ' + key;
+							classes.push(key);
 						}
 					}
 				}
 			}
 
-			return classes.substr(1);
+			return classes.join(' ');
 		}
 
 		if (typeof module !== 'undefined' && module.exports) {
@@ -2257,7 +2257,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            );
 	          })
 	        )
-	      ) : data.pages.map((function (page, i) {
+	      ) : data.pages.map(function (page, i) {
 	        return React.createElement(
 	          Pagination.Item,
 	          {
@@ -2269,7 +2269,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          },
 	          page.title
 	        );
-	      }).bind(this));
+	      }.bind(this));
 	    }
 	  },
 
@@ -2661,7 +2661,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  renderNav: function renderNav() {
 	    var activeKey = this.state.activeKey;
 
-	    return React.Children.map(this.props.children, (function (child, index) {
+	    return React.Children.map(this.props.children, function (child, index) {
 	      var key = child.props.key || child.props.eventKey || index;
 	      var disabled = child.props.disabled;
 
@@ -2677,7 +2677,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 	        child.props.title
 	      );
-	    }).bind(this));
+	    }.bind(this));
 	  },
 
 	  renderTabPanels: function renderTabPanels() {
@@ -2701,7 +2701,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var navs = [];
 	    var panels = [];
 
-	    this.props.data.forEach((function (item, key) {
+	    this.props.data.forEach(function (item, key) {
 	      navs.push(React.createElement(
 	        NavItem,
 	        {
@@ -2724,7 +2724,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          key: key },
 	        item.content
 	      ));
-	    }).bind(this));
+	    }.bind(this));
 
 	    return {
 	      navs: navs,
@@ -3034,7 +3034,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var node = this.getCollapsibleDOMNode();
 	    var dimension = this.dimension();
 
-	    var complete = (function () {
+	    var complete = function () {
 	      this._removeEndEventListener(node, complete);
 	      // remove dimension value - this ensures the collapsible item can grow
 	      // in dimension after initial display (such as an image loading)
@@ -3042,7 +3042,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.setState({
 	        collapsing: false
 	      });
-	    }).bind(this);
+	    }.bind(this);
 
 	    this._addEndEventListener(node, complete);
 
@@ -3729,7 +3729,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    if (Array.isArray(bodyChildren)) {
-	      bodyChildren.forEach((function (child) {
+	      bodyChildren.forEach(function (child) {
 	        // props fill and isValidElement
 	        if (this.shouldRenderFill(child)) {
 	          maybeRenderPanelBody();
@@ -3738,7 +3738,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        } else {
 	          panelBodyChildren.push(child);
 	        }
-	      }).bind(this));
+	      }.bind(this));
 
 	      maybeRenderPanelBody();
 	    } else {
@@ -6393,7 +6393,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        break;
 	      case 'confirm':
 	      case 'prompt':
-	        buttons = [props.cancelText, props.confirmText].map((function (text, i) {
+	        buttons = [props.cancelText, props.confirmText].map(function (text, i) {
 	          return React.createElement(
 	            'span',
 	            {
@@ -6403,7 +6403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            },
 	            text
 	          );
-	        }).bind(this));
+	        }.bind(this));
 	        break;
 	      default:
 	        buttons = null;
@@ -7012,10 +7012,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 
-	    this._hoverDelay = setTimeout((function () {
+	    this._hoverDelay = setTimeout(function () {
 	      this._hoverDelay = null;
 	      this.open();
-	    }).bind(this), delay);
+	    }.bind(this), delay);
 	  },
 
 	  handleDelayedClose: function handleDelayedClose() {
@@ -7032,10 +7032,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 
-	    this._hoverDelay = setTimeout((function () {
+	    this._hoverDelay = setTimeout(function () {
 	      this._hoverDelay = null;
 	      this.close();
-	    }).bind(this), delay);
+	    }.bind(this), delay);
 	  },
 
 	  updatePopoverPosition: function updatePopoverPosition() {
@@ -7388,11 +7388,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	          clearTimeout(this._timer);
 	        }
 
-	        this._timer = setTimeout((function () {
+	        this._timer = setTimeout(function () {
 	          this.setState({
 	            inViewport: true
 	          });
-	        }).bind(this), this.props.delay);
+	        }.bind(this), this.props.delay);
 	      }
 
 	      if (this.props.repeat && !isInView) {
@@ -7591,13 +7591,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this._linkNodes = ReactDOM.findDOMNode(this).querySelectorAll('a[href^="#"]');
 	    this._anchorNodes = [];
 
-	    Array.prototype.forEach.call(this._linkNodes, (function (link) {
+	    Array.prototype.forEach.call(this._linkNodes, function (link) {
 	      var anchor = document.getElementById(link.getAttribute('href').substr(1));
 
 	      if (anchor) {
 	        this._anchorNodes.push(anchor);
 	      }
-	    }).bind(this));
+	    }.bind(this));
 	  },
 
 	  checkIsInView: function checkIsInView() {
@@ -7625,9 +7625,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	          return;
 	        }
 
-	        Array.prototype.forEach.call(this._linkNodes, (function (link) {
+	        Array.prototype.forEach.call(this._linkNodes, function (link) {
 	          CSSCore.removeClass(link, this.props.activeClass);
-	        }).bind(this));
+	        }.bind(this));
 
 	        var targetLink = ReactDOM.findDOMNode(this).querySelector('a[href="#' + targetNode.id + '"]');
 
@@ -7917,7 +7917,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var filterText = this.state.filterText;
 	    var groupHeader;
 
-	    this.props.data.forEach((function (option, i) {
+	    this.props.data.forEach(function (option, i) {
 	      var checked = this.hasValue(option.value);
 	      var checkedClass = checked ? this.setClassNamespace('checked') : null;
 	      var checkedIcon = checked ? React.createElement(Icon, { icon: 'check' }) : null;
@@ -7955,7 +7955,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        ),
 	        checkedIcon
 	      ));
-	    }).bind(this));
+	    }.bind(this));
 
 	    var status = React.createElement(
 	      'span',
@@ -8254,7 +8254,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  renderControlNav: function renderControlNav() {
 	    if (this.props.controlNav) {
 	      var isThumbnailNav = false;
-	      var children = React.Children.map(this.props.children, (function (child, i) {
+	      var children = React.Children.map(this.props.children, function (child, i) {
 	        var className = i === this.getActiveIndex() ? this.setClassNamespace('active') : null;
 
 	        if (!isThumbnailNav) {
@@ -8272,7 +8272,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          thumb ? React.createElement('img', { className: className, src: thumb }) : React.createElement('a', { href: '#' + i, className: className }),
 	          React.createElement('i', null)
 	        );
-	      }).bind(this));
+	      }.bind(this));
 	      var controlClass = this.setClassNamespace('control-' + (isThumbnailNav ? 'thumbs' : 'paging'));
 
 	      return React.createElement(
@@ -8430,7 +8430,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(22);
@@ -8975,13 +8975,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'data-am-widget': this.props.classPrefix,
 	        className: classNames(this.props.className, classSet)
 	      }),
-	      this.props.data.map((function (item, i) {
+	      this.props.data.map(function (item, i) {
 	        return React.createElement(
 	          'li',
 	          { key: i },
 	          this.renderItem(item)
 	        );
-	      }).bind(this))
+	      }.bind(this))
 	    );
 	  }
 	});
@@ -9157,7 +9157,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  renderNav: function renderNav(position) {
 	    var data = this.props.data;
-	    var renderItem = (function (item, i) {
+	    var renderItem = function (item, i) {
 	      var handleClick = item.onSelect || this.props.onSelect;
 
 	      return React.createElement(
@@ -9176,7 +9176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          icon: item.icon
 	        }) : null
 	      );
-	    }).bind(this);
+	    }.bind(this);
 
 	    return data && data[position] ? React.createElement(
 	      'div',
@@ -9311,14 +9311,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  renderList: function renderList() {
 	    var position = this.props.thumbPosition;
-	    var orderChildren = (function (item, i) {
+	    var orderChildren = function (item, i) {
 	      var thumb = this.renderItemThumb(item, i);
 	      var main = this.renderItemMain(item, i);
 
 	      return position === 'right' || position === 'bottom-right' ? [main, thumb] : [thumb, main];
-	    }).bind(this);
+	    }.bind(this);
 
-	    return this.props.data.main.map((function (item, i) {
+	    return this.props.data.main.map(function (item, i) {
 	      return React.createElement(
 	        'li',
 	        {
@@ -9328,7 +9328,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        position === 'bottom-left' || position === 'bottom-right' ? this.renderThumbItemTitle(item) : null,
 	        orderChildren(item, i)
 	      );
-	    }).bind(this));
+	    }.bind(this));
 	  },
 
 	  renderItemMisc: function renderItemMisc(item, type) {
@@ -9526,9 +9526,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    e && e.preventDefault();
 	    this.setState({
 	      expanded: !this.state.expanded
-	    }, (function () {
+	    }, function () {
 	      !this.state.expanded && this.closeAll();
-	    }).bind(this));
+	    }.bind(this));
 	  },
 
 	  isDropdown: function isDropdown() {
@@ -9690,7 +9690,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      React.createElement(
 	        'ul',
 	        { className: this.prefixClass('nav') },
-	        this.props.data.map((function (item, i) {
+	        this.props.data.map(function (item, i) {
 	          var Link = item.component || 'a';
 	          var LinkProps = item.props || {};
 
@@ -9716,7 +9716,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              ) : null
 	            )
 	          );
-	        }).bind(this))
+	        }.bind(this))
 	      )
 	    );
 	  }
